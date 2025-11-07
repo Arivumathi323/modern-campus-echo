@@ -41,9 +41,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">M</span>
-            </div>
+            <img src="/src/assets/logo.png" alt="Madras Engineering College" className="h-14 w-auto" />
             <div>
               <h1 className="text-primary font-bold text-lg leading-tight">MADRAS</h1>
               <p className="text-secondary text-xs font-medium uppercase tracking-wide">Engineering College</p>

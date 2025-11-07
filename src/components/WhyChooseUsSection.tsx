@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Users, Wrench, Briefcase, Heart } from "lucide-react";
+import studentImg from "@/assets/student.jpg";
 
 const reasons = [
   {
@@ -31,38 +32,40 @@ const reasons = [
 
 const WhyChooseUsSection = () => {
   return (
-    <section id="why-choose-us" className="py-20 bg-background">
+    <section id="why-choose-us" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
-            Top Reasons to Study at<br />Madras Engineering College
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Top Reasons to Study at MEC
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Discover what makes us the preferred choice for aspiring engineers
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 hover:-translate-y-2 bg-white"
-            >
-              <CardHeader>
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <reason.icon className="w-8 h-8 text-primary" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto mb-12">
+          <div className="flex items-center justify-center">
+            <img 
+              src={studentImg} 
+              alt="MEC Student" 
+              className="rounded-3xl shadow-2xl w-full max-w-md object-cover"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 gap-8">
+            {reasons.map((reason, index) => (
+              <div key={index} className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-foreground/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <reason.icon className="w-6 h-6 text-foreground" />
                 </div>
-                <CardTitle className="text-xl font-bold text-foreground mb-2">
-                  {reason.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-muted-foreground leading-relaxed">
-                  {reason.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">
+                    {reason.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    {reason.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
