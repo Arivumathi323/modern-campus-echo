@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Cpu, Brain, Database, GitBranch, Code, Shield, TrendingUp } from "lucide-react";
 
 const programs = [
@@ -60,34 +61,45 @@ const ProgramsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {programs.map((program, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 hover:-translate-y-2"
-            >
-              <CardHeader className={`${program.color} rounded-t-lg p-8 flex items-center justify-center`}>
-                <div className="w-24 h-24 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-                  <program.icon className="w-12 h-12 text-foreground" />
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-7xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {programs.map((program, index) => (
+              <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <div className="h-full">
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 hover:-translate-y-2 h-full">
+                    <CardHeader className={`${program.color} rounded-t-lg p-8 flex items-center justify-center`}>
+                      <div className="w-24 h-24 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                        <program.icon className="w-12 h-12 text-foreground" />
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-6">
+                      <CardTitle className="text-lg font-bold text-foreground mb-3 leading-tight">
+                        {program.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                        {program.description}
+                      </CardDescription>
+                      <Button 
+                        variant="default" 
+                        className="w-full bg-foreground hover:bg-foreground/90 text-white font-semibold"
+                      >
+                        Let's Chat
+                      </Button>
+                    </CardContent>
+                  </Card>
                 </div>
-              </CardHeader>
-              <CardContent className="p-6">
-                <CardTitle className="text-lg font-bold text-foreground mb-3 leading-tight">
-                  {program.title}
-                </CardTitle>
-                <CardDescription className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {program.description}
-                </CardDescription>
-                <Button 
-                  variant="default" 
-                  className="w-full bg-foreground hover:bg-foreground/90 text-white font-semibold"
-                >
-                  Let's Chat
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="-left-4 md:-left-12" />
+          <CarouselNext className="-right-4 md:-right-12" />
+        </Carousel>
       </div>
     </section>
   );
